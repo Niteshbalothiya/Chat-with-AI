@@ -10,7 +10,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #000; /* Optional: black background */
+  background-color: #000;
 }
 
 /* Navigation Bar */
@@ -28,7 +28,7 @@ nav {
 /* Hero Section */
 .hero {
   width: 100%;
-  height: calc(100vh - 80px - 80px); /* Full height minus nav and input box */
+  height: calc(100vh - 160px); /* nav + input box = 160px */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,16 +43,18 @@ nav {
 #tag {
   font-size: 2.5vmax;
 }
-
-/* Category Buttons */
+.logo{
+  cursor: pointer;
+}
+/* Category Buttons Container */
 .cate {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
+/* Shared Category Button Styles */
 .upImg,
 .genImg,
 .chat {
@@ -68,6 +70,7 @@ nav {
   transition: background 0.2s ease;
 }
 
+/* Hover Effects */
 .upImg:hover,
 .genImg:hover,
 .chat:hover {
@@ -80,18 +83,20 @@ nav {
   height: 25px;
   color: rgb(7, 240, 11);
 }
+
 .genImg svg {
   width: 25px;
   height: 25px;
   color: rgb(7, 236, 240);
 }
+
 .chat svg {
   width: 25px;
   height: 25px;
   color: rgb(240, 155, 7);
 }
 
-/* Input Form */
+/* Input Box (Fixed at Bottom) */
 .input-box {
   width: 100%;
   height: 80px;
@@ -107,26 +112,6 @@ nav {
   z-index: 10;
 }
 
-/* Buttons */
-#add,
-#submit {
-  width: 60px;
-  height: 60px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  background-color: rgb(11, 16, 17);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#add svg,
-#submit svg {
-  width: 25px;
-  height: 25px;
-}
-
 /* Input Field */
 form input {
   max-width: 60%;
@@ -140,6 +125,122 @@ form input {
   padding: 0 20px;
   font-size: 17px;
 }
+
+/* Add / Submit Buttons */
+#add,
+#submit {
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background-color: rgb(11, 16, 17);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#add svg,
+#submit svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* Chat Page Content */
+.chat-page {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* User & AI Message Bubbles */
+.user,
+.ai {
+  width: fit-content;
+  max-width: 90%;
+  padding: 20px 30px;
+  color: white;
+  background-color: rgb(11, 16, 17);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user img {
+  width: 200px;
+  border-radius: 20px;
+}
+
+/* Popup Menu */
+.popup {
+  width: 200px;
+  position: absolute;
+  bottom: 120px;
+  left: 15%;
+  background-color: rgb(11, 16, 17);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Popup Options */
+.select-up,
+.select-gen {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.select-up svg {
+  color: rgb(7, 240, 11);
+  width: 25px;
+  height: 25px;
+}
+
+.select-gen svg {
+  color: rgb(7, 236, 240);
+  width: 25px;
+  height: 25px;
+}
+
+.select-up:hover,
+.select-gen:hover {
+  background-color: rgba(240, 248, 255, 0.164);
+}
+
+/* Special Color for Gen Image Icon */
+#genImg {
+  color: rgb(7, 236, 240);
+
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -162,7 +263,10 @@ form input {
 
   form input {
     max-width: 100%;
-    width: calc(100% - 140px);
     font-size: 16px;
+  }
+
+  .user img {
+    width: 100%;
   }
 }

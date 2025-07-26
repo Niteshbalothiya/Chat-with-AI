@@ -1,20 +1,39 @@
-import React from 'react'
+// components/Chat.js
+import React, { useContext } from 'react';
+import { dataContext, prevuser } from '../context/UserContext';
 
 const Chat = () => {
-  
+  const { showResult, feature ,preFeature, setpreFeature} = useContext(dataContext);
+
   return (
-    <div className='chat-page'>
+    <div className="chat-page">
       <div className="user">
-        <img src="" alt="" />
-        <span>user</span>
+        {preFeature== 'upimg' ?
+          <>
+            <img src={prevuser.imgUrl} alt="" />
+            <span>{prevuser.prompt}</span>
+          </>
+        :
+          <span>{prevuser.prompt}</span>
+        }
       </div>
 
       <div className="ai">
-        <img src="" alt="" />
-        <span>AI</span>
+        {preFeature == 'genimg'
+         ?
+          <>
+         {!showResult? <span>Generateing Image....</span>:<img src= {prevuser.imgUrl} alt="" />}
+         </>
+         :
+          !showResult
+          ?
+          <span></span>
+          :
+          <span> {showResult}</span>}
+          
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
